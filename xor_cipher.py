@@ -43,7 +43,7 @@ def get_message():
     #mes_str = re.sub( "[^a-z ]", "", mes_str)
     #mes_str = re.sub("\\s", "", mes_str)
     #mes_str = re.sub("\\n", "", mes_str)
-    print(mes_str)
+    #print(mes_str)
     message = BitVector(textstring=mes_str)
 
     return message
@@ -75,10 +75,10 @@ def xor_encrypt(key, message):
 
     with open("output_binary.txt", "w") as fptr:
         fptr.write(str(out_encrypted))
-    with open("output_text.txt", "w") as fptr:
-        fptr.write(out_encrypted.get_text_from_bitvector())
-    with open("output_hex.txt", "w") as fptr:
-        fptr.write(out_encrypted.get_hex_string_from_bitvector())
+    # with open("output_text.txt", "w") as fptr:
+    #     fptr.write(out_encrypted.get_text_from_bitvector())
+    # with open("output_hex.txt", "w") as fptr:
+    #     fptr.write(out_encrypted.get_hex_string_from_bitvector())
 
     return out_encrypted
 
