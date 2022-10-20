@@ -4,7 +4,7 @@ class chromosome:
     def __init__(self, key, decrypted):
         self.key = key
         self.decrypted = decrypted
-        self.score = self.find_fitness(key, decrypted)
+        self.score = self.xor_find_fitness(decrypted)
 
     def get_key(self):
         return self.key
@@ -15,7 +15,7 @@ class chromosome:
     def get_score(self):
         return self.score
 
-    def find_fitness(self, key, decrypted):
+    def xor_find_fitness(self, decrypted):
         common = 0
         total = 0
         expected = get_message()
@@ -31,6 +31,6 @@ class chromosome:
 
 if __name__ == "__main__":
     key = get_encryption_key("keys/key_2_bit.txt")
-    decrypted = get_message()
+    decrypted = get_message("input2.txt")
     a = chromosome(key, decrypted)
 
