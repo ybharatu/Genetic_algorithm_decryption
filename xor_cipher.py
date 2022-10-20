@@ -48,8 +48,8 @@ def get_encryption_key(key_file_name="key.txt"):
 #       Reads file "input.txt" and extracts message
 #       and converts it into a text file
 ##################################################
-def get_message():
-    with open("input.txt", "r") as fptr:
+def get_message(filename="input.txt"):
+    with open(filename, "r") as fptr:
         mes_str = fptr.read()
 
     mes_str = mes_str.lower()
