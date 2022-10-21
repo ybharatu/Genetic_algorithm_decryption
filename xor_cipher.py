@@ -52,12 +52,27 @@ def get_message(filename="input.txt"):
     with open(filename, "r") as fptr:
         mes_str = fptr.read()
 
+
     mes_str = mes_str.lower()
     #mes_str = re.sub( "[^a-z ]", "", mes_str)
     #mes_str = re.sub("\\s", "", mes_str)
     #mes_str = re.sub("\\n", "", mes_str)
     #print(mes_str)
     message = BitVector(textstring=mes_str)
+
+    return message
+
+
+def get_message_binary(filename="input.txt"):
+    with open(filename, "r") as fptr:
+        mes_str = fptr.read()
+
+    #mes_str = mes_str.lower()
+    # mes_str = re.sub( "[^a-z ]", "", mes_str)
+    # mes_str = re.sub("\\s", "", mes_str)
+    # mes_str = re.sub("\\n", "", mes_str)
+    # print(mes_str)
+    message = BitVector(bitstring=mes_str)
 
     return message
 
