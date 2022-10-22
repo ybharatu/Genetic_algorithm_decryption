@@ -7,12 +7,6 @@ class chromosome:
         self.key = key
         self.decrypted = xor_encrypt(key, message)
         self.score = self.xor_find_fitness(self.decrypted)
-        #print(str(key))
-        #if str(key) == "10":
-            #print("GOT 10!!!!")
-            #print(self.decrypted)
-            #print(message)
-        #print(self.decrypted.get_text_from_bitvector())
 
     def __eq__(self, other):
         return self.score == other.score
@@ -42,8 +36,8 @@ class chromosome:
                 common += 1
             total += 1
         #print("common: " + str(common) + " Total: " + str(total))
-        print(str(self.key))
-        print("Fitness: " + str(common / total))
+        # print(str(self.key))
+        # print("Fitness: " + str(common / total))
         #print()
         return common / total
 

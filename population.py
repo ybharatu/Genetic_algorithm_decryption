@@ -11,6 +11,7 @@ class population:
         self.next_individuals = []
         self.elites = []
         self.children = []
+        self.num_generations = 0
 
     def get_size(self):
         return self.bit_size
@@ -19,6 +20,7 @@ class population:
         return self.bin_encrypted
 
     def initialize(self):
+        self.num_generations = 0
         for i in range(NUM_PER_GENERATION):
             temp_str = self.get_random_bitstring(self.bit_size)
             temp_chromosome = chromosome(temp_str, self.bin_encrypted)
@@ -33,3 +35,71 @@ class population:
 
         return return_bv
 
+    def crossover_chrmosomes(self):
+        ################################################################
+        # Create offspring until max number of chromosomes per
+        # generation has been reached
+        ################################################################
+        curr_parent = 0
+        while len(self.next_individuals) != NUM_PER_GENERATION:
+            if curr_parent + 1 < NUM_PER_GENERATION - 1:
+                ################################################################
+                # Select two parents based on the most fit individuals and cycle
+                # through them. Ex: I0 and I1, I1 and I2,...
+                ################################################################
+                p1 = self.individuals[curr_parent].key
+                p2 = self.individuals[curr_parent+1].key
+
+                ################################################################
+                # Split both parents chromosomes into two. Getting a random
+                # position from 1 and size -1 to avoid having the same parent
+                # being created
+                ################################################################
+                crossover_pos = random.randint(1, self.bit_size - 1)
+                #crossover_pos = int(self.bit_size / 2)
+                l1, r1 = p1[:crossover_pos], p1[crossover_pos:]
+                l2, r2 = p2[:crossover_pos], p2[crossover_pos:]
+
+                ################################################################
+                # Combine them to make a child
+                ################################################################
+                #print("Using Parents: " + str(p1) + " and " + str(p2) + " Combining " + str(l1) + " and " + str(r2) + " to form " + str(l1)+str(r2))
+                c1 = chromosome(BitVector(bitstring=l1+r2), self.bin_encrypted)
+                self.children.append(c1)
+                self.next_individuals.append(c1)
+                if len(self.next_individuals) != NUM_PER_GENERATION:
+                    c2 = chromosome(BitVector(bitstring=l2+r1), self.bin_encrypted)
+                    self.children.append(c2)
+                    self.next_individuals.append(c2)
+                curr_parent += 1
+            else:
+                print("Shouldn't reach here in crossover_chromosomes")
+                print(len(self.next_individuals))
+
+    def mutate_chromosomes(self):
+        ################################################################
+        # Iterate through all chromosomes
+        ################################################################
+        for chrom in self.next_individuals:
+            ################################################################
+            # Iterate through each bit of the chromosome
+            ################################################################
+            for i in range(self.bit_size):
+                ################################################################
+                # flip the bit if the mutation check is successful
+                ################################################################
+                if random.randint(0, 99) < MUTATION_RATE * 100:
+                    #print("Mutating " + str(chrom.key) + ": Flipping the " + str(i) + " bit")
+                    if chrom.key[i] == 0:
+                        chrom.key[i] = 1
+                    else:
+                        chrom.key[i] = 0
+
+    def repopulate(self):
+        self.individuals = []
+        for i in self.next_individuals[:]:
+            self.individuals.append(i)
+            self.next_individuals.remove(i)
+        self.elites = []
+        self.children = []
+        self.num_generations += 1

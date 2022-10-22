@@ -19,13 +19,13 @@ def recursive_gen_binary(num_bits, bin_str, base_str=""):
     recursive_gen_binary(num_bits, bin_str, base_str + "0")
     recursive_gen_binary(num_bits, bin_str, base_str + "1")
 
-def brute_force_xor_bin(input_file, bits, expected):
-    with open(input_file, "r") as fptr:
-        bin_encrypted = fptr.read()
+def brute_force_xor_bin(bin_encrypted, bits, expected):
+    #with open(input_file, "r") as fptr:
+        #bin_encrypted = fptr.read()
     #expected = get_message()
 
     bin_str = gen_binary_strings(bits)
-    bin_encrypted = BitVector(bitstring=bin_encrypted)
+    #bin_encrypted = BitVector(bitstring=bin_encrypted)
 
     for i in bin_str:
         temp_key = BitVector(bitstring=i)
@@ -52,8 +52,9 @@ def brute_force_xor_test():
     print("Number of bits   Max combinations checked   Total Time(sec)     Value of Key")
     print("--------------   ------------------------   ---------------     ------------")
     for i in all_results:
+        encrypted_bin = get_message_binary(i)
         start = timer()
-        found_key = brute_force_xor_bin(i, j, expected)
+        found_key = brute_force_xor_bin(encrypted_bin, j, expected)
         end = timer()
         print("{:<16d} {:<23d} {:>14.9f}         {:>s}".format(j, 2**j, end-start , str(found_key)))
         j += 1
