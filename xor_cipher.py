@@ -31,10 +31,7 @@ def get_encryption_key(key_file_name="key.txt"):
     with open(key_file_name, "r") as fptr:
         key_str = fptr.read()
 
-    #print("Key: " + key_str)
     key = BitVector(bitstring=key_str.strip())
-    #key = BitVector(bitstring = key_str)
-    #print(key.get_text_from_bitvector())
     print("Size of Key: " + str(len(key)) + "bit(s)")
     return key
 
@@ -136,6 +133,9 @@ def gen_keys(n_bits):
             fptr.write(str(i) + "\n")
 
 
+################################################################
+# Encrypts the input message with every key found in keys/
+################################################################
 def encrypt_xor_test():
     ################################################################
     # Get the message
@@ -159,7 +159,7 @@ def encrypt_xor_test():
 
 if __name__ == "__main__":
 
-    gen_keys(15)
+    gen_keys(100)
     encrypt_xor_test()
     # key = get_encryption_key()
     # message = get_message()
