@@ -26,9 +26,9 @@ def genetic_xor_decrypt(bin_encrypted, bits, expected):
         ################################################################
         # Print Individuals of Current Generation
         ################################################################
-        # print("GENERATION " + str(pop.num_generations))
-        # for j in pop.individuals:
-        #     print(j.key)
+        print("GENERATION " + str(pop.num_generations))
+        for j in pop.individuals:
+            print(j.key)
         ################################################################
         # Finish early if key has been found
         ################################################################
@@ -45,7 +45,7 @@ def genetic_xor_decrypt(bin_encrypted, bits, expected):
             new_elite = chromosome(pop.individuals[j].key, pop.get_bin_encrypted())
             pop.elites.append(new_elite)
             pop.next_individuals.append(new_elite)
-            #print("Elites: " + str(pop.individuals[j].key))
+            print("Elites: " + str(pop.individuals[j].key))
 
         ################################################################
         # Crossover most fit chromosomes to produce offspring
@@ -68,15 +68,22 @@ def genetic_xor_decrypt(bin_encrypted, bits, expected):
         ################################################################
         pop.repopulate()
 
-if __name__ == "__main__":
-    bin_encrypted = get_message_binary("results/output_14_bits.txt")
-
+def genetic_xor_decrypt_explain_test():
+    bin_encrypted = get_message_binary("results/output_6_bits.txt")
     expected = get_message()
 
     start = timer()
-    output = genetic_xor_decrypt(bin_encrypted, 14, expected)
+    output = genetic_xor_decrypt(bin_encrypted, 6, expected)
     end = timer()
-    print("Took " + str(end-start) + " seconds")
-    print(output.get_text_from_bitvector())
+    print("Took " + str(end - start) + " seconds")
+    #print(output.get_text_from_bitvector())
+
+if __name__ == "__main__":
+    #bin_encrypted = get_message_binary("results/output_14_bits.txt")
+
+    #expected = get_message()
+    genetic_xor_decrypt_explain_test()
+
+
 
 

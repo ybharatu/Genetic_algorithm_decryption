@@ -1,0 +1,79 @@
+Looking for 110011
+GENERATION 0
+110010
+010111
+010010
+110100
+101101
+001111
+011100
+001101
+001110
+001100
+Elites: 110010
+Elites: 010111
+Using Parents: 110010 and 010111 Combining 1 and 10111 to form 110111
+Using Parents: 110010 and 010111 Combining 0 and 10010 to form 010010
+Using Parents: 010111 and 010010 Combining 01 and 0010 to form 010010
+Using Parents: 010111 and 010010 Combining 01 and 0111 to form 010111
+Using Parents: 010010 and 110100 Combining 0 and 10100 to form 010100
+Using Parents: 010010 and 110100 Combining 1 and 10010 to form 110010
+Using Parents: 110100 and 101101 Combining 1 and 01101 to form 101101
+Using Parents: 110100 and 101101 Combining 1 and 10100 to form 110100
+Mutating 110010: Flipping the 4 bit
+GENERATION 1
+110010
+110111
+110000
+010111
+010010
+010010
+010111
+110100
+010100
+101101
+Elites: 110010
+Elites: 110111
+Using Parents: 110010 and 110111 Combining 1 and 10111 to form 110111
+Using Parents: 110010 and 110111 Combining 1 and 10010 to form 110010
+Using Parents: 110111 and 110000 Combining 110 and 000 to form 110000
+Using Parents: 110111 and 110000 Combining 110 and 111 to form 110111
+Using Parents: 110000 and 010111 Combining 11000 and 1 to form 110001
+Using Parents: 110000 and 010111 Combining 01011 and 0 to form 010110
+Using Parents: 010111 and 010010 Combining 01 and 0010 to form 010010
+Using Parents: 010111 and 010010 Combining 01 and 0111 to form 010111
+GENERATION 2
+110010
+110111
+110111
+110010
+110111
+110001
+110000
+010010
+010111
+010110
+Elites: 110010
+Elites: 110111
+Using Parents: 110010 and 110111 Combining 110 and 111 to form 110111
+Using Parents: 110010 and 110111 Combining 110 and 010 to form 110010
+Using Parents: 110111 and 110111 Combining 1101 and 11 to form 110111
+Using Parents: 110111 and 110111 Combining 1101 and 11 to form 110111
+Using Parents: 110111 and 110010 Combining 1101 and 10 to form 110110
+Using Parents: 110111 and 110010 Combining 1100 and 11 to form 110011
+Using Parents: 110010 and 110111 Combining 11 and 0111 to form 110111
+Using Parents: 110010 and 110111 Combining 11 and 0010 to form 110010
+GENERATION 3
+110011
+110010
+110111
+110111
+110010
+110111
+110111
+110111
+110010
+110110
+Took 3 Generations to decrypt
+Key is : 110011
+Took 1.119006463 seconds

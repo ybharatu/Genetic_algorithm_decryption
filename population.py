@@ -63,11 +63,14 @@ class population:
                 ################################################################
                 # Combine them to make a child
                 ################################################################
-                #print("Using Parents: " + str(p1) + " and " + str(p2) + " Combining " + str(l1) + " and " + str(r2) + " to form " + str(l1)+str(r2))
+                print("Using Parents: " + str(p1) + " and " + str(p2) + " Combining " + str(l1) + " and " + str(r2) +
+                      " to form " + str(l1)+str(r2))
                 c1 = chromosome(BitVector(bitstring=l1+r2), self.bin_encrypted)
                 self.children.append(c1)
                 self.next_individuals.append(c1)
                 if len(self.next_individuals) != NUM_PER_GENERATION:
+                    print("Using Parents: " + str(p1) + " and " + str(p2) + " Combining " + str(l2) + " and " + str(
+                        r1) + " to form " + str(l2) + str(r1))
                     c2 = chromosome(BitVector(bitstring=l2+r1), self.bin_encrypted)
                     self.children.append(c2)
                     self.next_individuals.append(c2)
@@ -89,7 +92,7 @@ class population:
                 # flip the bit if the mutation check is successful
                 ################################################################
                 if random.randint(0, 99) < MUTATION_RATE * 100:
-                    #print("Mutating " + str(chrom.key) + ": Flipping the " + str(i) + " bit")
+                    print("Mutating " + str(chrom.key) + ": Flipping the " + str(i) + " bit")
                     if chrom.key[i] == 0:
                         chrom.key[i] = 1
                     else:
